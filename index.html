@@ -31,9 +31,9 @@
             </div>
         </a>
         <nav id="nav">
-            <ul >
+            <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">Services</a></li>
+                <li><a href="#services">Services</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
                 <li>
@@ -59,18 +59,54 @@
                 <h1 class="heading">CJ Bank</h1>
                 <p class="sub-heading">We Care.</p>
                 <p class="hero-content">
-                    With a focus on customer satisfaction and cutting-edge technology, 
+                    With a focus on customer satisfaction and cutting-edge technology,
                     CJ Bank is dedicated to helping individuals and businesses achieve their financial goals.
                 </p>
             </div>
             <div class="right-partition">
-                <!-- <h1>Right Partition</h1> -->
-                <div class="right-frames">
-                    <div class="frame frame1"></div>
-                    <div class="frame frame2"></div>
-                    <div class="frame frame3"></div>
-                    <div class="frame frame4"></div>
-
+                <div class="frame frame1"></div>
+                <div class="frame frame2"></div>
+                <div class="frame frame3"></div>
+                <div class="frame frame4"></div>
+                <div class="frame frame5"></div>
+                <div class="frame frame6"></div>
+                <div class="frame frame7"></div>
+                <div class="frame frame8"></div>
+                <div class="frame frame9"></div>
+                <div class="frame frame10"></div>
+            </div>
+        </section>
+        <section class="services" id="services">
+            <div class="left-partition">
+                <div class="container">
+                    <div class="content">
+                        <a href="#">
+                            <div class="content-overlay"></div>
+                            <img class="content-image"
+                                src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80">
+                            <div class="content-details">
+                                <h3 class="content-title">View Customers<i class="material-symbols-outlined arrow">
+                                        arrow_right_alt
+                                    </i></h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="right-partition">
+                <div class="container">
+                    <div class="content">
+                        <a href="#">
+                            <div class="content-overlay"></div>
+                            <img class="content-image"
+                                src="https://images.unsplash.com/photo-1565688842882-e0b2693d349a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80">
+                            <div class="content-details">
+                                <h3 class="content-title">Transfer<i class="material-symbols-outlined arrow">
+                                        arrow_right_alt
+                                    </i></h3>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -101,11 +137,11 @@
             $("#" + key).prop('checked', value);
             if (value) document.body.classList.toggle('light-mode');
 
-        }); 
+        });
 
         // navbar toggle function
-        function navbarToggler(){
-            var navbar=document.getElementById("nav");
+        function navbarToggler() {
+            var navbar = document.getElementById("nav");
             navbar.classList.toggle('show')
         }
     </script>
