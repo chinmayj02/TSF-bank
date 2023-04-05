@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJ Bank | Contact</title>
+    <link rel="icon" href="images/bank.png" type="image/icon type">
+    <!-- external css -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- google material icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- animated icons -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+
+<body>
+    <header>
+        <!-- hamburger icon for small screen navbar -->
+        <div class="toggle-btn" onclick="navbarToggler();">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- navbar brand logo -->
+        <a href="index.html">
+            <div class="logo">
+                <img src="images/bank.png" alt="Logo">
+                <span class="logo-text">
+                    <div>CJ</div>
+                    <div>Bank</div>
+                </span>
+            </div>
+        </a>
+        <!-- responsive navbar -->
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <!-- light/dark mode toggle switch using persistent checkbox -->
+                <li>
+                    <div id="checkbox-container" title="Theme">
+                        <input type="checkbox" class="checkbox" id="checkbox" autocomplete="on">
+                        <label for="checkbox" class="label">
+                            <span class="material-symbols-outlined sun">
+                                light_mode
+                            </span>
+                            <span class="material-symbols-outlined moon">
+                                dark_mode
+                            </span>
+                            <div class='ball'>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- contact section begin -->
+    <section class="about">
+        <p>
+        <ul style="list-style-type: none; display: flex; flex-direction: column; justify-content: space-between;">
+            <li style="margin-bottom: 30px;">
+                <div style="display: flex; ">
+                    <div>
+                        <lottie-player src="https://assets4.lottiefiles.com/private_files/lf30_hjfn7pr5.json"
+                            background="transparent" speed="1" style="width:100px;height:100px" loop
+                            autoplay></lottie-player>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1>Connect With Me On LinkedIn</h1>
+                        <p style="margin-top: 5px;"><a target="_blank" href="www.linkedin.com/in/chinmayjoshi02"
+                                style="text-decoration: none;">www.linkedin.com/in/chinmayjoshi02</a></p>
+                    </div>
+                </div>
+            </li>
+            <li style="margin-bottom: 30px;">
+                <div style="display: flex; ">
+                    <div>
+                        <lottie-player src="https://assets8.lottiefiles.com/private_files/lf30_igelfovr.json"
+                            background="transparent" speed="1" style="width:100px;height:100px" loop
+                            autoplay></lottie-player>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1>Follow Me On Instagram</h1>
+                        <p style="margin-top: 5px;"><a target="_blank" href="https://www.instagram.com/chinmay.j02/"
+                                style="text-decoration: none;">https://www.instagram.com/chinmay.j02/</a></p>
+                    </div>
+                </div>
+            </li>
+            <li style="margin-bottom: 30px;">
+                <div style="display: flex; ">
+                    <div>
+                        <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_jl34iheo.json"
+                            background="transparent" speed="1" style="width:100px;height:100px" loop
+                            autoplay></lottie-player>
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1>Lets be friends on Facebook</h1>
+                        <p style="margin-top: 5px;"><a target="_blank"
+                                href="https://www.facebook.com/ChinmayJoshi.5702?mibextid=ZbWKwL"
+                                style="text-decoration: none;">https://www.facebook.com/ChinmayJoshi.5702</a></p>
+                    </div>
+                </div>
+            </li>
+            <!-- <li style="margin-bottom: 30px;">
+                <div style="display: flex; ">
+                    <div>
+                        add github icon here
+                    </div>
+                    <div style="display: flex; flex-direction: column; justify-content: center;">
+                        <h1>Checkout my other projects on GitHub</h1>
+                        <p style="margin-top: 5px;"><a target="_blank" href="https://github.com/chinmayj02"
+                                style="text-decoration: none;">https://github.com/chinmayj02</a></p>
+                    </div>
+                </div>
+            </li> -->
+        </ul>
+        </p>
+    </section>
+    <!-- contact section end -->
+    <footer>
+        <p>&copy; 2023 CJ Bank. All rights reserved.</p>
+    </footer>
+    <script>
+        // persistent checkbox for light-dark  ode toggle
+        const checkbox = document.getElementById('checkbox');
+        checkbox.addEventListener('change', () => {
+            document.body.classList.toggle('light-mode');
+        })
+
+        var checkboxValue = JSON.parse(localStorage.getItem('checkboxValue')) || {},
+            $checkboxes = $("#checkbox-container :checkbox");
+
+        $checkboxes.on("change", function () {
+            $checkboxes.each(function () {
+                checkboxValue[this.id] = this.checked;
+            });
+
+            localStorage.setItem("checkboxValue", JSON.stringify(checkboxValue));
+        });
+
+        // On page load
+        $.each(checkboxValue, function (key, value) {
+            $("#" + key).prop('checked', value);
+            if (value) document.body.classList.toggle('light-mode');
+
+        });
+
+        // navbar toggle function
+        function navbarToggler() {
+            var navbar = document.getElementById("nav");
+            navbar.classList.toggle('show')
+        }
+    </script>
+</body>
+
+</html>

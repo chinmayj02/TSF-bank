@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CJ Bank | Home</title>
+    <title>CJ Bank | About</title>
     <link rel="icon" href="images/bank.png" type="image/icon type">
     <!-- external css -->
     <link rel="stylesheet" href="css/styles.css">
@@ -14,6 +15,7 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <header>
         <!-- hamburger icon for small screen navbar -->
@@ -37,8 +39,8 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
                 <!-- light/dark mode toggle switch using persistent checkbox -->
                 <li>
                     <div id="checkbox-container" title="Theme">
@@ -58,47 +60,48 @@
         </nav>
     </header>
     <!-- about section begin -->
-    <section class="about" id="about">
+    <section class="about">
         <p>
             <span class="about-line1">This project is developed as a task for The Sparks Foundation's
-            Graduate Rotational Internship Program, April 23.</span><br><br>
-            <span class="about-line2">By: Chinmay Joshi</span><br>
+                Graduate Rotational Internship Program, April 23.</span><br><br>
+            <span class="about-line2">By: <a href="contact.html" style="text-decoration: none;">Chinmay Joshi</a></span><br>
         </p>
-</section>        
-<!-- about section begin -->
-<footer>
-    <p>&copy; 2023 CJ Bank. All rights reserved.</p>
-</footer>
-<script>
-    // persistent checkbox for light-dark  ode toggle
-    const checkbox = document.getElementById('checkbox');
-    checkbox.addEventListener('change', () => {
-        document.body.classList.toggle('light-mode');
-    })
+    </section>
+    <!-- about section begin -->
+    <footer>
+        <p>&copy; 2023 CJ Bank. All rights reserved.</p>
+    </footer>
+    <script>
+        // persistent checkbox for light-dark  ode toggle
+        const checkbox = document.getElementById('checkbox');
+        checkbox.addEventListener('change', () => {
+            document.body.classList.toggle('light-mode');
+        })
 
-    var checkboxValue = JSON.parse(localStorage.getItem('checkboxValue')) || {},
-        $checkboxes = $("#checkbox-container :checkbox");
+        var checkboxValue = JSON.parse(localStorage.getItem('checkboxValue')) || {},
+            $checkboxes = $("#checkbox-container :checkbox");
 
-    $checkboxes.on("change", function () {
-        $checkboxes.each(function () {
-            checkboxValue[this.id] = this.checked;
+        $checkboxes.on("change", function () {
+            $checkboxes.each(function () {
+                checkboxValue[this.id] = this.checked;
+            });
+
+            localStorage.setItem("checkboxValue", JSON.stringify(checkboxValue));
         });
 
-        localStorage.setItem("checkboxValue", JSON.stringify(checkboxValue));
-    });
+        // On page load
+        $.each(checkboxValue, function (key, value) {
+            $("#" + key).prop('checked', value);
+            if (value) document.body.classList.toggle('light-mode');
 
-    // On page load
-    $.each(checkboxValue, function (key, value) {
-        $("#" + key).prop('checked', value);
-        if (value) document.body.classList.toggle('light-mode');
+        });
 
-    });
-
-    // navbar toggle function
-    function navbarToggler() {
-        var navbar = document.getElementById("nav");
-        navbar.classList.toggle('show')
-    }
-</script>
+        // navbar toggle function
+        function navbarToggler() {
+            var navbar = document.getElementById("nav");
+            navbar.classList.toggle('show')
+        }
+    </script>
 </body>
+
 </html>
