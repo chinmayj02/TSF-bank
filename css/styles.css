@@ -5,6 +5,10 @@
     font-family: sans-serif;
 }
 
+::selection {
+    background-color: rgb(149, 237, 255, 0.5);
+  }
+
 a {
     color: inherit;
     text-decoration: none;
@@ -339,22 +343,57 @@ section.about {
     padding: 50px;
 }
 
-.about-line1{
-    font-size: 20px;
+.about-line{
     font-weight: bold;
     margin-bottom: 20px !important;
 }
 
-.about-line2{
-    font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 20px;
+.about-line1{
+    font-size: 20px;
 }
 
-.about-line3{
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
+.about-line2{
+    font-size: 15px;
+}
+
+section.contact {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* padding: 50px; */
+}
+
+.contact-list{
+    list-style-type: none; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+}
+
+.contact-list li{
+    margin-bottom: 30px;
+}
+
+.contact-icon-plus-text{
+    display: flex;
+}
+
+.contact-icon-plus-text lottie-player{
+    width:100px;
+    height:100px
+}
+
+.contact-text-only{
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+}
+
+.contact-text-only p{
+    margin-top: 5px;
 }
 
 footer {
@@ -467,6 +506,15 @@ footer {
     .content-title {
         font-weight: bold !important;
         font-size: 18px !important;
+    }
+    .contact-icon-plus-text{
+        flex-direction: column;
+        align-items: center;
+    }
+    .contact-text-only p{
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
     }
 }
 
