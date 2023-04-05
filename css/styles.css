@@ -140,7 +140,7 @@ nav ul li a {
 }
 
 section.hero {
-    height:80vh;
+    height: 80vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -226,7 +226,7 @@ section.hero .right-partition {
 }
 
 section.services {
-    height:90vh;
+    height: 90vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -241,10 +241,11 @@ section.services {
     max-width: 400px;
     margin: auto;
     overflow: hidden;
-  }
-  
-  .content .content-overlay {
-    background: rgb(149, 237, 255, 0.5);;
+}
+
+.content .content-overlay {
+    background: rgb(149, 237, 255, 0.5);
+    ;
     position: absolute;
     height: 99%;
     width: 100%;
@@ -256,75 +257,104 @@ section.services {
     -webkit-transition: all 0.4s ease-in-out 0s;
     -moz-transition: all 0.4s ease-in-out 0s;
     transition: all 0.4s ease-in-out 0s;
-  }
-  
-  .content:hover .content-overlay{
+}
+
+.content:hover .content-overlay {
     opacity: 1;
     border-radius: 8px;
-  }
-  
-  .content-image{
+}
+
+.content-image {
     width: 100%;
     border-radius: 8px;
-  }
+}
 
-  .content-details {
+.content-details {
     position: absolute;
     text-align: center;
     width: 90%;
     top: 50%;
-    left:5%;
+    left: 5%;
     border-style: solid;
     border-radius: 8px;
     padding: 1px;
-  }
-  
-  .content-details h3{
+}
+
+.content-details h3 {
     color: azure;
     font-weight: 500;
     letter-spacing: 0.15em;
     margin-bottom: 0.5em;
     text-transform: uppercase;
-  }
-  
-  .arrow {
-    font-size: 20px!important;
+}
+
+.arrow {
+    font-size: 20px !important;
     margin-left: 8px;
     font-weight: bold !important;
 
-  }
-  
-  .content h3 {
+}
+
+.content h3 {
     display: inline-block;
     position: relative;
     transition: all 300ms ease-out;
     will-change: transform;
-  }
-  
-  .content:hover h3 {
+}
+
+.content:hover h3 {
     -webkit-transform: translate3d(-1rem, 0, 0);
-            transform: translate3d(-1rem, 0, 0);
-  }
-  .content i {
+    transform: translate3d(-1rem, 0, 0);
+}
+
+.content i {
     position: absolute;
     width: 1.1em;
     right: -1.4rem;
     opacity: 1;
     top: 38%;
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
+    transform: translateY(-50%);
     transition: all 300ms ease-out;
     will-change: right, opacity;
-  }
-  
-  .content:hover i {
+}
+
+.content:hover i {
     opacity: 1;
     right: -3rem;
-  }
+}
 
-.content-title{
+.content-title {
     font-weight: bold !important;
     font-size: 20px !important;
+}
+
+section.about {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 50px;
+}
+
+.about-line1{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px !important;
+}
+
+.about-line2{
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.about-line3{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 footer {
@@ -430,10 +460,11 @@ footer {
         font-size: 20px;
     }
 
-    .container{
-        margin-top:30px;
+    .container {
+        margin-top: 30px;
     }
-    .content-title{
+
+    .content-title {
         font-weight: bold !important;
         font-size: 18px !important;
     }
@@ -481,7 +512,7 @@ footer {
 
     section.hero {
         padding: 30px;
-        height:50vh;
+        height: 50vh;
     }
 
     section.hero .left-partition,
@@ -510,30 +541,32 @@ footer {
         font-size: 20px;
     }
 
-    .content-title{
+    .content-title {
         font-weight: bold !important;
         font-size: 18px !important;
     }
 
-    section.services .left-partition, 
+    section.services .left-partition,
     section.services .right-partition {
         flex-basis: 100%;
         margin: 0;
     }
-    section.services .left-partition{
+
+    section.services .left-partition {
         margin-top: 50px;
     }
+}
 
 /* additional media queiries */
 
 @media only screen and (max-width: 769px) {
-    .container{
-        margin-top:100px;
+    .container {
+        margin-top: 100px;
     }
 }
 
 @media only screen and (max-width: 756px)and (min-width: 504px) {
     section.hero {
-        height:50vh;
+        height: 50vh;
     }
 }

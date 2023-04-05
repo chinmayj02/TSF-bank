@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CJ Bank | Home</title>
+    <link rel="icon" href="images/bank.png" type="image/icon type">
+    <!-- external css -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- google material icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <!-- hamburger icon for small screen navbar -->
+        <div class="toggle-btn" onclick="navbarToggler();">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <!-- navbar brand logo -->
+        <a href="index.html">
+            <div class="logo">
+                <img src="images/bank.png" alt="Logo">
+                <span class="logo-text">
+                    <div>CJ</div>
+                    <div>Bank</div>
+                </span>
+            </div>
+        </a>
+        <!-- responsive navbar -->
+        <nav id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <!-- light/dark mode toggle switch using persistent checkbox -->
+                <li>
+                    <div id="checkbox-container" title="Theme">
+                        <input type="checkbox" class="checkbox" id="checkbox" autocomplete="on">
+                        <label for="checkbox" class="label">
+                            <span class="material-symbols-outlined sun">
+                                light_mode
+                            </span>
+                            <span class="material-symbols-outlined moon">
+                                dark_mode
+                            </span>
+                            <div class='ball'>
+                        </label>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- about section begin -->
+    <section class="about" id="about">
+        <p>
+            <span class="about-line1">This project is developed as a task for The Sparks Foundation's
+            Graduate Rotational Internship Program, April 23.</span><br><br>
+            <span class="about-line2">By: Chinmay Joshi</span><br>
+        </p>
+</section>        
+<!-- about section begin -->
+<footer>
+    <p>&copy; 2023 CJ Bank. All rights reserved.</p>
+</footer>
+<script>
+    // persistent checkbox for light-dark  ode toggle
+    const checkbox = document.getElementById('checkbox');
+    checkbox.addEventListener('change', () => {
+        document.body.classList.toggle('light-mode');
+    })
+
+    var checkboxValue = JSON.parse(localStorage.getItem('checkboxValue')) || {},
+        $checkboxes = $("#checkbox-container :checkbox");
+
+    $checkboxes.on("change", function () {
+        $checkboxes.each(function () {
+            checkboxValue[this.id] = this.checked;
+        });
+
+        localStorage.setItem("checkboxValue", JSON.stringify(checkboxValue));
+    });
+
+    // On page load
+    $.each(checkboxValue, function (key, value) {
+        $("#" + key).prop('checked', value);
+        if (value) document.body.classList.toggle('light-mode');
+
+    });
+
+    // navbar toggle function
+    function navbarToggler() {
+        var navbar = document.getElementById("nav");
+        navbar.classList.toggle('show')
+    }
+</script>
+</body>
+</html>
