@@ -39,7 +39,7 @@
         <nav id="nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#services">Services</a></li>
+                <li><a href="index.html#services">Services</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <!-- light/dark mode toggle switch using persistent checkbox -->
@@ -69,7 +69,7 @@
         <p>&copy; 2023 CJ Bank. All rights reserved.</p>
     </footer>
     <script>
-        function getCustomerData(){
+        function getCustomerData() {
             // http request to get data from db
             let xhr = new XMLHttpRequest();
 
@@ -114,9 +114,10 @@
             navbar.classList.toggle('show')
         }
 
+        // create table dynamically with columns only equal to the data in database
         function renderTable(myObj) {
             let tbl = document.getElementById("main");
-            tbl.innerHTML='';
+            tbl.innerHTML = '';
             let table = document.createElement("table");
             let thead = document.createElement("thead");
             let headerRow = document.createElement("tr");
@@ -149,6 +150,7 @@
             table.appendChild(tbody);
             tbl.appendChild(table);
         }
+        // updates the table in a fixed interval
         setInterval(getCustomerData, 1);
     </script>
 </body>
