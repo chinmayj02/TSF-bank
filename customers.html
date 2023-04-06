@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CJ Bank | Home</title>
+    <title>CJ Bank | Customers</title>
     <link rel="icon" href="images/bank.png" type="image/icon type">
     <!-- external css -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/customers.css">
     <!-- google material icons -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -59,73 +60,59 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <!-- homepage hero section begin -->
-        <section class="hero">
-            <div class="left-partition">
-                <h1 class="heading">CJ Bank</h1>
-                <p class="sub-heading">We Care.</p>
-                <p class="hero-content">
-                    With a focus on customer satisfaction and cutting-edge technology,
-                    CJ Bank is dedicated to helping individuals and businesses achieve their financial goals.
-                </p>
-            </div>
-            <div class="right-partition">
-                <div class="frame frame1"></div>
-                <div class="frame frame2"></div>
-                <div class="frame frame3"></div>
-                <div class="frame frame4"></div>
-                <div class="frame frame5"></div>
-                <div class="frame frame6"></div>
-                <div class="frame frame7"></div>
-                <div class="frame frame8"></div>
-                <div class="frame frame9"></div>
-                <div class="frame frame10"></div>
-            </div>
-        </section>
-        <!-- homepage hero section end -->
-        <!-- homepage services section begin -->
-        <section class="services" id="services">
-            <div class="left-partition">
-                <div class="container">
-                    <div class="content">
-                        <a href="customers.html">
-                            <div class="content-overlay"></div>
-                            <img class="content-image"
-                                src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80">
-                            <div class="content-details">
-                                <h3 class="content-title">View Customers<i class="material-symbols-outlined arrow">
-                                        arrow_right_alt
-                                    </i></h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="right-partition">
-                <div class="container">
-                    <div class="content">
-                        <a href="#">
-                            <div class="content-overlay"></div>
-                            <img class="content-image"
-                                src="https://images.unsplash.com/photo-1565688842882-e0b2693d349a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80">
-                            <div class="content-details">
-                                <h3 class="content-title">Transfer<i class="material-symbols-outlined arrow">
-                                        arrow_right_alt
-                                    </i></h3>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- homepage services section end -->
+    <main id="main">
+        <!-- <table id="tblOlSalesSummary"></table> -->
+
 
     </main>
     <footer>
         <p>&copy; 2023 CJ Bank. All rights reserved.</p>
     </footer>
     <script>
+        // http request to get data from db
+        let xhr = new XMLHttpRequest();
+
+        xhr.open("GET", "scripts/script.php?customers=1");
+
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                var myObj = JSON.parse(xhr.responseText);
+                let tbl = document.getElementById("main");
+                let table = document.createElement("table");
+                let thead = document.createElement("thead");
+                let headerRow = document.createElement("tr");
+                let th = document.createElement("th");
+                th.innerHTML = "Name"; //header
+                headerRow.appendChild(th);
+                th = document.createElement("th");
+                th.innerHTML = "Unique-ID"; //header
+                headerRow.appendChild(th);
+                th = document.createElement("th");
+                th.innerHTML = "Balance"; //header
+                headerRow.appendChild(th);
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+                // populating table dynamically from received data from http request to database server
+                let tbody = document.createElement("tbody");
+                for (let i = 0; i < Object.keys(myObj).length; i++) {
+                    let row = document.createElement("tr");
+                    let nameCell = document.createElement("td");
+                    nameCell.innerHTML = myObj[i]['name'];
+                    let idCell = document.createElement("td");
+                    idCell.innerHTML = myObj[i]['unique-id'];
+                    let balanceCell = document.createElement("td");
+                    balanceCell.innerHTML = myObj[i]['balance'];
+                    row.appendChild(nameCell);
+                    row.appendChild(idCell);
+                    row.appendChild(balanceCell);
+                    tbody.appendChild(row);
+                }
+                table.appendChild(tbody);
+                tbl.appendChild(table);
+            }
+        };
+        xhr.send();
+
         // persistent checkbox for light-dark  ode toggle
         const checkbox = document.getElementById('checkbox');
         checkbox.addEventListener('change', () => {
