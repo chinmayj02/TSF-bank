@@ -59,9 +59,7 @@ th {
         white-space: nowrap;
     }
 
-    /*
-	Label the data
-	*/
+    /* Label the data */
     td:nth-of-type(1):before {
         content: "Name" !important;
     }

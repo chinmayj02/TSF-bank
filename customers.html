@@ -8,8 +8,8 @@
     <title>CJ Bank | Customers</title>
     <link rel="icon" href="images/bank.png" type="image/icon type">
     <!-- external css -->
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/customers.css">
+    <link rel="stylesheet" href="css/styles.css?v=1">
+    <link rel="stylesheet" href="css/customers.css?v=1">
     <!-- google material icons -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body>
+<body onload="getCustomerData();">
     <header>
         <!-- hamburger icon for small screen navbar -->
         <div class="toggle-btn" onclick="navbarToggler();">
@@ -69,49 +69,20 @@
         <p>&copy; 2023 CJ Bank. All rights reserved.</p>
     </footer>
     <script>
-        // http request to get data from db
-        let xhr = new XMLHttpRequest();
+        function getCustomerData(){
+            // http request to get data from db
+            let xhr = new XMLHttpRequest();
 
-        xhr.open("GET", "scripts/script.php?customers=1");
+            xhr.open("GET", "scripts/script.php?customers=1");
 
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === 4) {
-                var myObj = JSON.parse(xhr.responseText);
-                let tbl = document.getElementById("main");
-                let table = document.createElement("table");
-                let thead = document.createElement("thead");
-                let headerRow = document.createElement("tr");
-                let th = document.createElement("th");
-                th.innerHTML = "Name"; //header
-                headerRow.appendChild(th);
-                th = document.createElement("th");
-                th.innerHTML = "Unique-ID"; //header
-                headerRow.appendChild(th);
-                th = document.createElement("th");
-                th.innerHTML = "Balance"; //header
-                headerRow.appendChild(th);
-                thead.appendChild(headerRow);
-                table.appendChild(thead);
-                // populating table dynamically from received data from http request to database server
-                let tbody = document.createElement("tbody");
-                for (let i = 0; i < Object.keys(myObj).length; i++) {
-                    let row = document.createElement("tr");
-                    let nameCell = document.createElement("td");
-                    nameCell.innerHTML = myObj[i]['name'];
-                    let idCell = document.createElement("td");
-                    idCell.innerHTML = myObj[i]['unique-id'];
-                    let balanceCell = document.createElement("td");
-                    balanceCell.innerHTML = myObj[i]['balance'];
-                    row.appendChild(nameCell);
-                    row.appendChild(idCell);
-                    row.appendChild(balanceCell);
-                    tbody.appendChild(row);
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    var myObj = JSON.parse(xhr.responseText);
+                    renderTable(myObj);
                 }
-                table.appendChild(tbody);
-                tbl.appendChild(table);
-            }
-        };
-        xhr.send();
+            };
+            xhr.send();
+        }
 
         // persistent checkbox for light-dark  ode toggle
         const checkbox = document.getElementById('checkbox');
@@ -142,6 +113,43 @@
             var navbar = document.getElementById("nav");
             navbar.classList.toggle('show')
         }
+
+        function renderTable(myObj) {
+            let tbl = document.getElementById("main");
+            tbl.innerHTML='';
+            let table = document.createElement("table");
+            let thead = document.createElement("thead");
+            let headerRow = document.createElement("tr");
+            let th = document.createElement("th");
+            th.innerHTML = "Name"; //header
+            headerRow.appendChild(th);
+            th = document.createElement("th");
+            th.innerHTML = "Unique-ID"; //header
+            headerRow.appendChild(th);
+            th = document.createElement("th");
+            th.innerHTML = "Balance"; //header
+            headerRow.appendChild(th);
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+            // populating table dynamically from received data from http request to database server
+            let tbody = document.createElement("tbody");
+            for (let i = 0; i < Object.keys(myObj).length; i++) {
+                let row = document.createElement("tr");
+                let nameCell = document.createElement("td");
+                nameCell.innerHTML = myObj[i]['name'];
+                let idCell = document.createElement("td");
+                idCell.innerHTML = myObj[i]['unique-id'];
+                let balanceCell = document.createElement("td");
+                balanceCell.innerHTML = myObj[i]['balance'];
+                row.appendChild(nameCell);
+                row.appendChild(idCell);
+                row.appendChild(balanceCell);
+                tbody.appendChild(row);
+            }
+            table.appendChild(tbody);
+            tbl.appendChild(table);
+        }
+        setInterval(getCustomerData, 1);
     </script>
 </body>
 
