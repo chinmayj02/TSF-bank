@@ -399,13 +399,14 @@ section.contact {
 .transfer {
     height: 80vh;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 50px;
+    justify-content: center;
+    /* padding: 50px; */
 }
 
 .transfer .transfer-sender {
-    flex-basis: calc(40% - 30px);
+    flex-basis: calc(30% - 30px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -414,76 +415,144 @@ section.contact {
 .transfer .transfer-arrow {
     flex-basis: calc(20% - 30px);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 .transfer .transfer-receiver {
-    flex-basis: calc(40% - 30px);
+    flex-basis: calc(30% - 30px);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.custom-input-field {
-    position: relative;
-    font-size: 14px;
-    border-top: 20px solid transparent;
-    margin-bottom: 5px;
-    display: inline-block;
-    --field-padding: 12px;
-    border: 3px solid currentColor;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    opacity: 0.7;
-
+.transfer-upper-half{
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-.custom-input-field input {
-    border:none;
-    -webkit-appearance: none;
-    -ms-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    padding: var(--field-padding);
-    width: 250px;
-    outline: none;
-    font-size: 14px;
-    background: linear-gradient(90deg, currentColor, currentColor) center bottom/0 0.15em no-repeat;
-    transition: background-size 0.3s ease;
-    color: currentColor !important;
-
+.transfer-lower-half{
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.custom-input-field .placeholder {
-    position: absolute;
-    left: var(--field-padding);
-    width: calc(100% - (var(--field-padding) * 2));
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    top: 22px;
-    line-height: 100%;
-    transform: translateY(-50%);
+
+
+.custom-input-field{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    width:100%;
+}
+.amount{
+    width:40%;
+}
+
+input {
+    border: none;
+}
+
+::-webkit-input-placeholder {
+    color: rgb(2, 196, 235);
+    font-weight: bold;
+    font-size: 12px;
+    transition: all .5s ease-in-out;
+    text-align: center;
+
+}
+input:focus::-webkit-input-placeholder {
+    color: rgb(2, 196, 235,0.5);
+    font-weight: lighter;
+    transform: scale(0.7);
+}
+
+.input-line {
+    background: none;
+    margin-bottom: 10px;
+    line-height: 2.4em;
     color: currentColor;
-    transition:
-        top 0.3s ease,
-        color 0.3s ease,
-        font-size 0.3s ease;
+    width: 100%;
+    font-weight: 300;
+    letter-spacing: 0px;
+    letter-spacing: 0.02rem;
+    font-size: 19px;
+    font-size: 1.2rem;
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
-.custom-input-field input.dirty+.placeholder,
-.custom-input-field input:focus+.placeholder,
-.custom-input-field input:not(:placeholder-shown)+.placeholder {
-    top: -10px;
-    font-size: 10px;
+.input-line:focus {
+    outline: none;
+    border-width: 0 0 3px 0;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
-.custom-input-field input.dirty,
-.custom-input-field input:not(:placeholder-shown),
-.custom-input-field input:focus {
-    background-size: 100% 0.15em, 100% 0.1em, 100%;
+.transfer-btn {
+    font-size: 20px;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    margin-top: 15px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    background-color: rgb(2, 196, 235, 0.5);
+    color: currentColor;
+    transition: all .2s ease-in-out;
+
 }
+
+.transfer-btn:focus,
+.transfer-btn:active:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+.transfer-btn:hover,
+.transfer-btn:focus {
+    background-color: rgb(2, 196, 235, 0.8);
+    text-decoration: none;
+    transform: scale(1.1);
+}
+
+.transfer-btn:active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+}
+
+input[type=button]:disabled{
+    background-color: rgb(2, 196, 235, 0.3);
+    pointer-events: none;
+}
+
+
+
+
+
+
 
 footer {
     text-align: center;
@@ -716,8 +785,8 @@ footer {
 @media only screen and (max-width: 1300px) {
     .transfer {
         height: 80vh;
-        flex-direction: row;
-        justify-content: space-around;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .transfer .transfer-sender {
@@ -728,17 +797,25 @@ footer {
     }
 
     .transfer .transfer-arrow {
-        flex-basis: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        display: none;
     }
 
     .transfer .transfer-receiver {
         flex-basis: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
     }
+    .transfer-upper-half{
+        /* flex-basis: 50%; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
+    .amount{
+        width:30%;
+    }
 }
