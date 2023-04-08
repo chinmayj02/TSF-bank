@@ -206,7 +206,7 @@
                 Please Enter Your Password Below: <br><br>
                 <div class="btns">
                     <label class="custom-input-field">
-                        <input id="password" name="password" type='text' placeholder="Password" class='input-line'
+                        <input id="password" name="password" type='password' placeholder="Password" class='input-line'
                             style="width:40%">
                     </label>
                     <div style="flex-basis: 50%;">
@@ -219,6 +219,9 @@
     </div>
     <!-- overlay end -->
 
+    <!-- scripts for cryptoJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
     <script>
         //global variables for validation
         var valid = { sender: 0, receiver: 0 }
@@ -306,7 +309,6 @@
 
             }
             else {
-                console.log(amount);
                 document.getElementById("amount").style.borderColor = "green";
                 document.getElementById("btn").disabled = false;
             }
