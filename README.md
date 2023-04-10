@@ -27,6 +27,6 @@ The project is hosted at https://cjbnk.000webhostapp.com/
 
 ## Using the project
 
-The Unique IDs are present in the database, displayed on the '**View Customers**' page.
+The Unique IDs are present in the database, displayed on the '**View Customers**' page.<br>
 The default password for all users is '**password**'
 
